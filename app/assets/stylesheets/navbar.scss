@@ -1,3 +1,5 @@
+$black-link: rgb(32, 30, 30);
+
 * {
   box-sizing: border-box;
 }
@@ -20,9 +22,13 @@
   display: inline-block;
   font-size: 24px;
   font-family: "Dancing Script";
-  color: rgb(32, 30, 30);
   padding: 10px 10px 10px 10px;
   margin-left: 10px;
+
+  a {
+    text-decoration: none;
+    color: $black-link;    
+  }
 }
 
 .nav > .nav-btn {
