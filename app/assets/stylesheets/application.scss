@@ -14,52 +14,51 @@
  *= require_self
  */
 
+.col {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+}
+
 html, body {
-  margin: 10px;
+    margin: 10px;
 }
 
 body {
-  background-color: #faeebf;
+    background-color: #faeebf;
 }
 
 .bg-head {
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('heartfruits');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('heartfruits');
+    font-size: 4em;
 }
 
 .bg-foot {
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('healthy-veg-grains');
-  color: white;
-  text-align: center;
-  font-size: 1.5em;
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('healthy-veg-grains');
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 div.bg-head > div {
-  opacity: 0.55;
+    opacity: 0.55;
 }
 
 .bg-head, .bg-foot {
-  position: relative;
-  min-height: 35rem;
-  padding: 15rem 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-  
-  color: white; 
-  text-align: center; 
-  font-size: 400%; 
-  font-family: 'Dancing Script'; 
-}
-
-.col {
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  text-align: center;
+    position: relative;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-family: 'Dancing Script';
 }
 
 #foot-txt {
-  opacity: 0.66;
+    opacity: 0.66;
 }
