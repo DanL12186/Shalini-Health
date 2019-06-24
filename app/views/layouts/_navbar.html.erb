@@ -23,8 +23,9 @@
   <div class="nav-links">
     <a href="http://stackoverflow.com/users/4084003/" target="_blank">Cooking Classes</a>
     <a href="#">Consultations</a>
-    <a href="https://codepen.io/jo_Geek/" target="_blank">Lifestyle</a>
+    <%= link_to 'About Shalini', static_pages_about_path %>
     <%= link_to 'Sign Up', '/signup' unless logged_in? %>
     <%= link_to 'Log In', '/login' unless logged_in? %>
+    <%= link_to 'Make an Appointment', '/appointments/new' if logged_in? %>
   </div>
 </div>
