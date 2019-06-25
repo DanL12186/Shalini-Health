@@ -1,0 +1,5 @@
+<%= title('Make an Appointment') %>
+
+<%= month_calendar do | date | %>
+  <%= date.day if date.friday? %>
+<% end %>
