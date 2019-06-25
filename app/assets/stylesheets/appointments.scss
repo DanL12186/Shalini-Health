@@ -1,3 +1,39 @@
 // Place all the styles related to the appointments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.simple-calendar {
+    $unavailable-gray: #DDD;
+
+    margin-top: 5%; 
+    text-align: center;
+    font-size: 1.5em;
+
+    .future { 
+        background-color: white;
+    }
+
+    //currently because only fridays are open, gray out all other days, and past days 
+    //(as well as "todays" that aren't fridays)
+    .past, .wday-0, .wday-1, .wday-2, .wday-3, .wday-4, .wday-6 {
+        background-color: $unavailable-gray;
+        &.today {
+            background-color: $unavailable-gray;
+        }
+    }
+
+    // td.today {
+    //     border: 2px dotted black;
+    // }
+
+    a {
+        text-decoration: none;
+        color: blue;
+    }
+
+    tr {
+        th {
+            text-align: center;
+        }
+    }
+}
