@@ -1,5 +1,4 @@
 class AppointmentsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:get_availability]
   
   def new
     @appointment = Appointment.new

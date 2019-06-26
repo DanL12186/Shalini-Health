@@ -1,4 +1,5 @@
 document.addEventListener('turbolinks:load', function() {
+  const authToken = document.querySelectorAll('head meta')[1].content
   
   //String as "Month Year", e.g. "June 2019"
   const monthAndYear = document.querySelector('.calendar-title'),
@@ -17,20 +18,23 @@ document.addEventListener('turbolinks:load', function() {
           December: 12
         }, 
         timeSlots = [ '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00' ]
-
-  //authToken = document.querySelectorAll('head meta')[1].content
             
   //shalani's only working fridays, so we loop over these (wday-5)
   document.querySelectorAll('.day.wday-5.future').forEach(function(friday) {
     friday.addEventListener('click', function() {
+      friday.style.backgroundColor = 'red';
+
       const [month, year] = monthAndYear.innerText.split(' '),
             monthNum  = monthsToNumbers[month],
             day       = this.innerText,
-            url       = `/appointments/get_availability?year=${year}&month=${monthNum}&day=${day}`;
-            
-      friday.style.backgroundColor = 'red';
+            url       = `/appointments/get_availability?year=${year}&month=${monthNum}&day=${day}`,
+            options = { 
+              method: 'POST', 
+              credentials: 'same-origin',
+              headers: { 'X-CSRF-Token': authToken }
+            };
 
-      fetch(url, options = { method: 'POST' })
+      fetch(url, options)
         .then(response => response.json())
         .then(unavailableTimes => {
           const unavailableHours = unavailableTimes.map(date=> date.match(/\d{2}:\d{2}/)[0]),
