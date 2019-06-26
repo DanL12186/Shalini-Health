@@ -9,8 +9,9 @@
     text-align: center;
     font-size: 1.5em;
 
-    .future { 
+    .wday-5.future.current-month { 
         background-color: white;
+        cursor: pointer;
     }
 
     //currently because only fridays are open, gray out all other days, and past days 
@@ -21,10 +22,6 @@
             background-color: $unavailable-gray;
         }
     }
-
-    // td.today {
-    //     border: 2px dotted black;
-    // }
 
     a {
         text-decoration: none;
