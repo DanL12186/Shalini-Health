@@ -45,4 +45,10 @@
     text-align: left;
     padding: 20px;
     background-color: white;
+    min-height: 15em;
+
+    .date-title {
+        text-align: center;
+        font-size: 2vw;
+    }
 }
