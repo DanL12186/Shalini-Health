@@ -24,7 +24,7 @@
 }
 
 html, body {
-    margin: 10px;
+    margin: 8px;
 }
 
 body {
@@ -34,6 +34,7 @@ body {
 .bg-head {
     background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('heartfruits');
     font-size: 4em;
+    margin-bottom: 20px;
 }
 
 .bg-foot {
@@ -49,7 +50,8 @@ div.bg-head > div {
 
 .bg-head, .bg-foot {
     position: relative;
-    min-height: 35rem;
+    min-height: 5rem;
+    max-height: 15rem;
     padding: 15rem 0;
     background-position: center;
     background-repeat: no-repeat;
