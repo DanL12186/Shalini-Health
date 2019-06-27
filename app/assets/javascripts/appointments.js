@@ -20,17 +20,33 @@ document.addEventListener('turbolinks:load', function() {
 
   const updateURL = (currentURL, newURL) => history.replaceState(currentURL, null, newURL);
 
-  //shalani's only working fridays, so we loop over these (wday-5)
+  const militaryToStandardTime = time => {
+    if (time === '12:00') {
+      return '12:00 pm (noon)'
+    } else if (time < '12:00') {
+      return `${time.replace(/^0/,'')} am`
+    } else {
+      return `${parseInt(time) - 12}:00 pm`
+    }
+  }
+
   //current placeholder for a window of options that will pop up for the user to make an appt
-  const getAvailability = (url, options) => {
+  const getAvailability = (url, options, month, day, year) => {
     fetch(url, options)
     .then(response => response.json())
     .then(unavailableTimes => {
       const unavailableHours =  unavailableTimes.map(date=> date.match(/\d{2}:\d{2}/)[0]),
             availableTimes   =  timeSlots.filter(slot => !unavailableHours.includes(slot)),
+            stnadardTimes    =  availableTimes.map(time => militaryToStandardTime(time))
             calendar         =  document.querySelector('.simple-calendar'),
-            whiteBox         =  `<div class='whiteBox'>
-                                  ${availableTimes.map(time => `<div>${time}</div>`).join('\n')}
+            whiteBox         = `<div class='whiteBox'>
+
+                                  <h2 class='date-title'> Available Times for Friday, ${month} ${day}, ${year}: </h2>
+
+                                  <select>
+                                    ${stnadardTimes.map(time => `<option class='timeSlot' value=${time}> ${time} </option>`).join('\n')}
+                                  </select>
+
                                 </div>`
 
       calendar.innerHTML = whiteBox
@@ -40,29 +56,30 @@ document.addEventListener('turbolinks:load', function() {
     });
   };
 
+  //shalani's only working fridays, so we only loop over these (wday-5)
   const addAppointmentListeners = () => {
     document.querySelectorAll('.day.wday-5.future').forEach(friday => {
       friday.addEventListener('click', event => {
         friday.style.backgroundColor = 'red';
 
         const [month, year] = monthAndYear.innerText.split(' '),
-              monthNum  = monthsToNumbers[month],
-              day       = event.target.innerText,
-              url       = `/appointments/get_availability?year=${year}&month=${monthNum}&day=${day}`,
-              options = { 
-                method: 'POST', 
-                credentials: 'same-origin',
-                headers: { 'X-CSRF-Token': authToken }
-              };
+              monthNum      = monthsToNumbers[month],
+              day           = event.target.innerText,
+              url           = `/appointments/get_availability?year=${year}&month=${monthNum}&day=${day}`,
+              options       = { 
+                                method: 'POST', 
+                                credentials: 'same-origin',
+                                headers: { 'X-CSRF-Token': authToken }
+                              };
 
-        getAvailability(url, options)
+        getAvailability(url, options, month, day, year)
       });
     });
   };
 
   const loadNewCalendar = (response, event) => {
-    const newCalendar = response.body.querySelector('.simple-calendar'),
-          oldCalendar = document.querySelector('.simple-calendar');
+    const oldCalendar = document.querySelector('.simple-calendar'),
+          newCalendar = response.body.querySelector('.simple-calendar');
 
     oldCalendar.innerHTML = newCalendar.innerHTML;
 
