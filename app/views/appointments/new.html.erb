@@ -1,5 +1,11 @@
 <%= title('Make an Appointment') %>
 
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <!--form and close button added in JS-->
+  </div>
+</div>
+
 <%= month_calendar do | date | %>
-  <%= date.day if date.friday? %>
+  <%= date.day %>
 <% end %>
