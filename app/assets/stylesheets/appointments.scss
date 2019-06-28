@@ -15,6 +15,10 @@
     .wday-5.future.current-month { 
         background-color: white;
         cursor: pointer;
+        &:hover {
+            background-color: gray;
+            border-radius: 10%;
+        }
     }
 
     //currently because only fridays are open, gray out all other days, and past days 
@@ -27,10 +31,16 @@
     }
 
     a {
-        font-size: 1.25vw;
+        font-size: 1em;
         text-decoration: none;
         color: blue;
         margin: 10px;
+    }
+
+    @media(max-width: 640px) {
+        a {
+            font-size: 0.6em;
+        }
     }
 
     tr {
@@ -41,11 +51,11 @@
 
 }
 
-.whiteBox {
+.modal-content {
     text-align: left;
     padding: 20px;
     background-color: white;
-    min-height: 15em;
+    
 
     .date-title {
         text-align: center;
