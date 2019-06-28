@@ -52,7 +52,8 @@ document.addEventListener('turbolinks:load', function() {
     }
   });
 
-  //current placeholder for a window of options that will pop up for the user to make an appt
+  //gets availability of appointments for the selected day, then displays those times..
+  //in a modal where the user can book an appointment
   const getAvailability = (url, options, month, day, year) => {
     fetch(url, options)
     .then(response => response.json())
