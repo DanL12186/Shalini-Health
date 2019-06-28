@@ -1,7 +1,8 @@
 document.addEventListener('turbolinks:load', function() {
+  const authToken = document.querySelectorAll('head [name=csrf-token]')[0].content;
 
-  const authToken = document.querySelectorAll('head [name=csrf-token]')[0].content
-  const monthAndYear = document.querySelector('.calendar-title'),
+  const modal           = document.getElementById("myModal"),
+        monthAndYear    = document.querySelector('.calendar-title'),
         monthsToNumbers = {
           January: 1,
           February: 2,
@@ -16,7 +17,27 @@ document.addEventListener('turbolinks:load', function() {
           November: 11,
           December: 12
         },
-        timeSlots = [ '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00' ];
+        timeSlots = [
+          '09:00',
+          '10:00',
+          '11:00',
+          '12:00',
+          '13:00',
+          '14:00',
+          '15:00',
+          '16:00',
+          '17:00'
+        ];
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        
+        //clear modal
+        document.querySelector('.modal-content').innerHTML = ''
+        modal.style.display = "none";
+      }
+    }
 
   const updateURL = (currentURL, newURL) => history.replaceState(currentURL, null, newURL);
 
@@ -37,30 +58,40 @@ document.addEventListener('turbolinks:load', function() {
     .then(unavailableTimes => {
       const unavailableHours =  unavailableTimes.map(date=> date.match(/\d{2}:\d{2}/)[0]),
             availableTimes   =  timeSlots.filter(slot => !unavailableHours.includes(slot)),
-            stnadardTimes    =  availableTimes.map(time => militaryToStandardTime(time))
-            calendar         =  document.querySelector('.simple-calendar'),
-            whiteBox         = `<div class='whiteBox'>
+            standardTimes    =  availableTimes.map(time => militaryToStandardTime(time)),
+            modalContent     =  document.querySelector('.modal-content');
 
-                                  <h2 class='date-title'> Available Times for Friday, ${month} ${day}, ${year}: </h2>
+      const createRadioButton = time => `<input type="radio" id="${time}" name="timeSelect" value="${time}">
+                                        <label for="${time}">${time}</label>`;
 
-                                  <select>
-                                    ${stnadardTimes.map(time => `<option class='timeSlot' value=${time}> ${time} </option>`).join('\n')}
-                                  </select>
+      modalContent.innerHTML = `<span class="close">&times;</span>
+                                <h2 class='date-title'> Available Times for Friday, ${month} ${day}, ${year}: </h2>
+                                <form class='selectAppointment'>
+                                  <div id='options'></div>
+                                </form>`
 
-                                </div>`
+      const form = document.querySelector('.selectAppointment')
+      
+      standardTimes.forEach(time => {
+        form.innerHTML += `<p> ${createRadioButton(time, time)} </p>`
+      });
 
-      calendar.innerHTML = whiteBox
-
-      console.log('unavailable times are...', unavailableTimes)
-      console.log('available times are..', availableTimes)
+      form.innerHTML += `<button input='submit'>Submit</button>`
+      document.querySelectorAll('.close').forEach(thing=> {
+        thing.addEventListener('click', function() {
+          modal.style.display = "none";
+        })
+      });
     });
   };
-
+  
   //shalani's only working fridays, so we only loop over these (wday-5)
-  const addAppointmentListeners = () => {
-    document.querySelectorAll('.day.wday-5.future').forEach(friday => {
+  const addCalendarListeners = () => {
+    const availableDays = document.querySelectorAll('.day.wday-5.future')
+    availableDays.forEach(friday => {
       friday.addEventListener('click', event => {
         friday.style.backgroundColor = 'red';
+        modal.style.display = "block";
 
         const [month, year] = monthAndYear.innerText.split(' '),
               monthNum      = monthsToNumbers[month],
@@ -83,7 +114,7 @@ document.addEventListener('turbolinks:load', function() {
 
     oldCalendar.innerHTML = newCalendar.innerHTML;
 
-    addAppointmentListeners();
+    addCalendarListeners();
     addNextPrevButtonListeners()
     updateURL(window.location.href, event.target.href);
   };
@@ -103,5 +134,5 @@ document.addEventListener('turbolinks:load', function() {
   };
 
   addNextPrevButtonListeners()
-  addAppointmentListeners()
+  addCalendarListeners()
 })
