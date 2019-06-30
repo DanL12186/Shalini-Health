@@ -52,6 +52,12 @@ document.addEventListener('turbolinks:load', function() {
     }
   });
 
+  const addModalCloseListener = () => { 
+    document.querySelector('.close').addEventListener('click', () => {
+      modal.style.display = "none";
+    })
+  };
+
   //gets availability of appointments for the selected day, then displays those times..
   //in a modal where the user can book an appointment
   const getAvailability = (url, options, month, day, year) => {
@@ -80,9 +86,7 @@ document.addEventListener('turbolinks:load', function() {
 
       form.innerHTML += radioButtons + submitButton
 
-      document.querySelector('.close').addEventListener('click', () => {
-          modal.style.display = "none";
-      });
+      addModalCloseListener()
     });
   };
 
