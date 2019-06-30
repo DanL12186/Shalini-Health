@@ -75,7 +75,7 @@ document.addEventListener('turbolinks:load', function() {
                                 </form>`
 
       const form         = document.querySelector('.selectAppointment'),
-            radioButtons = standardTimes.map(time => `<p> ${createRadioButton(time, time)} </p>`).join(''),
+            radioButtons = standardTimes.map(time => `<p> ${createRadioButton(time)} </p>`).join(''),
             submitButton = `<button input='submit'>Submit</button>`;
 
       form.innerHTML += radioButtons + submitButton
@@ -108,7 +108,7 @@ document.addEventListener('turbolinks:load', function() {
         modal.style.display = "block";
 
         const monthAndYear  = document.querySelector('.calendar-title'),
-             [month, year] = monthAndYear.innerText.split(' '),
+             [month, year]  = monthAndYear.innerText.split(' '),
               monthNum      = monthsToNumbers[month],
               day           = event.target.innerText,
               url           = `/appointments/get_availability?year=${year}&month=${monthNum}&day=${day}`,
