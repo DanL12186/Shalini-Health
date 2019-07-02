@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  include TimeConversion
+
   skip_before_action :verify_authenticity_token, only: [:create]
   
   def new
@@ -27,19 +29,12 @@ class AppointmentsController < ApplicationController
 
   private
 
-    #works simply because there's no 9-5 overlap
-    def standard_to_military_time(hour)
-      hour = hour.match(/\d+/)[0].to_i
-
-      hour < 9 ? (hour + 12) : (hour)
-    end
-
     def get_date_from_params
       year, month, day, hour = [ 
         params[:year], 
         params[:month], 
         params[:day], 
-        standard_to_military_time(params[:hour]) 
+        convert_hour(params[:hour].to_i, convert_to = 'military')
       ].map(&:to_i)
   
       DateTime.new(year, month, day, hour, 0, 0)
