@@ -1,0 +1,12 @@
+<h1> Hi, <%= @user.first_name %>! </h1>
+
+<% if @user.appointments.size > 0 %>
+  <div> You have upcoming appointments! </div>
+
+  <% @future_appointments.each do | appointment | %>
+    <h4>
+      <%= format_date(appointment.date) %> 
+    </h4>
+  <% end %>
+
+<% end %>
