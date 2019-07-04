@@ -70,7 +70,7 @@ document.addEventListener('turbolinks:load', function() {
             modalContent     =  document.querySelector('.modal-content');
 
       const createRadioButton = time => `<input type="radio" id="${time}" name="hour" value="${time}">
-                                        <label for="${time}">${time}</label>`;
+                                         <label for="${time}">${time}</label>`;
 
       const formPayload = `authenticity_token=${authToken}&day=${day}&month=${monthsToNumbers[month]}&year=${year}`
 
