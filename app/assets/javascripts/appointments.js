@@ -1,5 +1,7 @@
 document.addEventListener('turbolinks:load', function() {
-  const authToken = document.querySelectorAll('head [name=csrf-token]')[0].content;
+  const authToken  = document.querySelectorAll('head [name=csrf-token]')[0].content,
+        openedDays = {};
+  
   const monthsToNumbers = {
           January: 1,
           February: 2,
@@ -27,6 +29,13 @@ document.addEventListener('turbolinks:load', function() {
         ],
         modal = document.getElementById("myModal");
         
+  const populateModalIfCached = (day, month, year) => {
+    const calendarKey = `${month}-${day}-${year}`
+
+    if (openedDays[calendarKey]) {
+      return document.querySelector('.modal-content').innerHTML += openedDays[calendarKey]
+    };
+  }
 
   const updateURL = (currentURL, newURL) => {
     history.replaceState(currentURL, null, newURL);
@@ -46,7 +55,7 @@ document.addEventListener('turbolinks:load', function() {
   window.addEventListener('click', event => {
     if (event.target === modal) {
       
-      //clear modal
+      //clear modal on close
       document.querySelector('.modal-content').innerHTML = ''
       modal.style.display = "none";
     }
@@ -86,6 +95,9 @@ document.addEventListener('turbolinks:load', function() {
 
       form.innerHTML += radioButtons + submitButton
 
+      //save modal and query information 
+      openedDays[`${month}-${day}-${year}`] = modalContent.innerHTML
+
       addModalCloseListener()
     });
   };
@@ -121,6 +133,11 @@ document.addEventListener('turbolinks:load', function() {
                                 credentials: 'same-origin',
                                 headers: { 'X-CSRF-Token': authToken }
                               };
+        
+        //load cached data if possible, without hitting db
+        if (populateModalIfCached(day, month, year)) {
+          return null;
+        }
 
         getAvailability(url, options, month, day, year)
       });
