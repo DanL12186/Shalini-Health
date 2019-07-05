@@ -15,6 +15,10 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def destroy
+    Appointment.find(params[:id]).destroy
+  end
+
   def get_availability
     #temporary
     params.select { | key, _ | :year || :month || :day }.permit!
