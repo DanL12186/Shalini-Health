@@ -58,7 +58,7 @@ $black-link: rgb(32, 30, 30);
   display: none;
 }
 
-@media (max-width:900px) {
+@media (max-width:1000px) {
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
@@ -97,6 +97,7 @@ $black-link: rgb(32, 30, 30);
     display: block;
     width: 100%;
     color: white;
+    text-align: center;
   }
   .nav > #nav-check:not(:checked) ~ .nav-links {
     height: 0px;
