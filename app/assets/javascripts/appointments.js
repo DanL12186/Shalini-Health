@@ -69,7 +69,7 @@ document.addEventListener('turbolinks:load', function() {
 
   const enableSubmitUponSelection = form => {
     form.querySelectorAll('input').forEach(input => {
-      input.addEventListener('click', event => {
+      input.addEventListener('click', () => {
         form.querySelector('#submit').removeAttribute('disabled')
       })
     })
