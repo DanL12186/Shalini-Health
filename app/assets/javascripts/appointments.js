@@ -67,6 +67,14 @@ document.addEventListener('turbolinks:load', function() {
     })
   };
 
+  const enableSubmitUponSelection = form => {
+    form.querySelectorAll('input').forEach(input => {
+      input.addEventListener('click', event => {
+        form.querySelector('#submit').removeAttribute('disabled')
+      })
+    })
+  }
+
   //gets availability of appointments for the selected day, then displays those times..
   //in a modal where the user can book an appointment
   const getAvailability = (url, options, month, day, year) => {
@@ -91,9 +99,12 @@ document.addEventListener('turbolinks:load', function() {
 
       const form         = document.querySelector('.selectAppointment'),
             radioButtons = standardTimes.map(time => `<p> ${createRadioButton(time)} </p>`).join(''),
-            submitButton = `<button input='submit' data-confirm='Book this appointment for ${month} ${day}, ${year}?'>Submit</button>`;
-
+            submitButton = `<button input='submit' disabled=true id='submit' data-confirm='Book this appointment for ${month} ${day}, ${year}?'>Submit</button>`;
+      
       form.innerHTML += radioButtons + submitButton
+    
+      //re-enable form submit button when a choice is selected
+      enableSubmitUponSelection(form)
 
       //save modal and query information 
       openedDays[`${month}-${day}-${year}`] = modalContent.innerHTML
