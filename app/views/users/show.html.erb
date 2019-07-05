@@ -13,7 +13,7 @@
         <%= format_date(appointment.date) %> 
 
         <% if (appointment.date - 24.hours).future? %>          
-          <%= button_to "Cancel", appointment, class: :button, method: :delete, data: { confirm: "Delete appointment on #{appointment.date}?" } %>
+          <%= button_to "Cancel Appointment", appointment, class: :button, method: :delete, data: { confirm: "Delete appointment on #{appointment.date}?" } %>
         <% end %>
       </h4>
     <% end %>
