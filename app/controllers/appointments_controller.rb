@@ -17,6 +17,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     Appointment.find(params[:id]).destroy
+    redirect_to current_user
   end
 
   def get_availability
