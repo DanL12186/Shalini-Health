@@ -1,12 +1,19 @@
-<h1> Hi, <%= @user.first_name %>! </h1>
+<div class='text-center'>
 
-<% if @user.appointments.size > 0 %>
-  <div> You have upcoming appointments! </div>
+  <h1> Hi, <%= @user.first_name %>! </h1>
 
-  <% @future_appointments.each do | appointment | %>
-    <h4>
-      <%= format_date(appointment.date) %> 
-    </h4>
+  <% unless @future_appointments.empty? %>
+
+    <h3> 
+      You have <%= @future_appointments.size %> upcoming <%= @future_appointments.size > 1 ? 'appointments' : 'appointment' %>:
+    </h3>
+
+    <% @future_appointments.each do | appointment | %>
+      <h4> 
+        <%= format_date(appointment.date) %> 
+      </h4>
+    <% end %>
+
   <% end %>
 
-<% end %>
+</div>
