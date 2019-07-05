@@ -21,13 +21,13 @@
   </div>
   
   <div class="nav-links">
-    <%= link_to 'You', user_path(current_user) if logged_in? %>
+    <%= link_to 'About Shalini', static_pages_about_path %>  
     <a href="http://stackoverflow.com/users/4084003/" target="_blank">Cooking Classes</a>
     <a href="#">Consultations</a>
-    <%= link_to 'About Shalini', static_pages_about_path %>
     <%= link_to 'Sign Up', '/signup' unless logged_in? %>
     <%= link_to 'Log In', '/login' unless logged_in? %>
     <%= link_to 'Make an Appointment', '/appointments/new' if logged_in? %>
+    <%= link_to 'You', user_path(current_user) if logged_in? %>
     <%= link_to 'Log Out', '/logout', method: :delete if logged_in? %>
   </div>
 </div>
