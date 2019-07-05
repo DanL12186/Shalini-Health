@@ -61,7 +61,7 @@ document.addEventListener('turbolinks:load', function() {
     }
   });
 
-  const addModalCloseListener = () => { 
+  const wipeModalOnClose = () => { 
     document.querySelector('.close').addEventListener('click', () => {
       modal.style.display = "none";
     })
@@ -91,14 +91,14 @@ document.addEventListener('turbolinks:load', function() {
 
       const form         = document.querySelector('.selectAppointment'),
             radioButtons = standardTimes.map(time => `<p> ${createRadioButton(time)} </p>`).join(''),
-            submitButton = `<button input='submit'>Submit</button>`;
+            submitButton = `<button input='submit' data-confirm='Book this appointment for ${month} ${day}, ${year} ${x=form}?'>Submit</button>`;
 
       form.innerHTML += radioButtons + submitButton
 
       //save modal and query information 
       openedDays[`${month}-${day}-${year}`] = modalContent.innerHTML
 
-      addModalCloseListener()
+      wipeModalOnClose()
     });
   };
 
