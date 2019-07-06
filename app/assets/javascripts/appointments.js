@@ -51,11 +51,9 @@ document.addEventListener('turbolinks:load', function() {
     }
   }
 
-  // When the user clicks anywhere outside of the modal, close it
+  // When the user clicks anywhere outside of the modal, wipe and close it
   window.addEventListener('click', event => {
     if (event.target === modal) {
-      
-      //clear modal on close
       document.querySelector('.modal-content').innerHTML = ''
       modal.style.display = "none";
     }
