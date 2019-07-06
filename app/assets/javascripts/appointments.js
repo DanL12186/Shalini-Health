@@ -55,7 +55,7 @@ document.addEventListener('turbolinks:load', function() {
   window.addEventListener('click', event => {
     if (event.target === outerModal || event.target.getAttribute('class') === 'close') {
       document.querySelector('.modal-content').innerHTML = ''
-      modal.style.display = "none";
+      outerModal.style.display = "none";
     }
   });
 
@@ -122,7 +122,7 @@ document.addEventListener('turbolinks:load', function() {
 
     availableDays.forEach(friday => {
       friday.addEventListener('click', event => {
-        modal.style.display = "block";
+        outerModal.style.display = "block";
 
         const monthAndYear  = document.querySelector('.calendar-title'),
              [month, year]  = monthAndYear.innerText.split(' '),
