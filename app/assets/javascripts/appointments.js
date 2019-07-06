@@ -27,7 +27,7 @@ document.addEventListener('turbolinks:load', function() {
           '16:00',
           '17:00'
         ],
-        modal = document.getElementById("myModal");
+        outerModal = document.getElementById("myModal");
         
   const populateModalIfCached = (day, month, year) => {
     const calendarKey = `${month}-${day}-${year}`
@@ -51,19 +51,13 @@ document.addEventListener('turbolinks:load', function() {
     }
   }
 
-  // When the user clicks anywhere outside of the modal, wipe and close it
+  //When user clicks anywhere outside of the modal's body content or on its close button, wipe and close it
   window.addEventListener('click', event => {
-    if (event.target === modal) {
+    if (event.target === outerModal || event.target.getAttribute('class') === 'close') {
       document.querySelector('.modal-content').innerHTML = ''
       modal.style.display = "none";
     }
   });
-
-  const wipeModalOnClose = () => { 
-    document.querySelector('.close').addEventListener('click', () => {
-      modal.style.display = "none";
-    })
-  };
 
   const enableSubmitUponSelection = form => {
     form.querySelectorAll('input').forEach(input => {
@@ -87,11 +81,11 @@ document.addEventListener('turbolinks:load', function() {
       const createRadioButton = time => `<input type="radio" id="${time}" name="hour" value="${time}">
                                          <label for="${time}">${time}</label>`;
 
-      const formPayload = `authenticity_token=${authToken}&day=${day}&month=${monthsToNumbers[month]}&year=${year}`
+      const formPostData     = `authenticity_token=${authToken}&day=${day}&month=${monthsToNumbers[month]}&year=${year}`
 
       modalContent.innerHTML = `<span class="close">&times;</span>
                                 <h2 class='date-title'> Available Times for Friday, ${month} ${day}, ${year}: </h2>
-                                <form class='selectAppointment' method='POST' action='/appointments?${formPayload}'>
+                                <form class='selectAppointment' method='POST' action='/appointments?${formPostData}'>
                                   <div id='options'></div>
                                 </form>`
 
@@ -106,8 +100,6 @@ document.addEventListener('turbolinks:load', function() {
 
       //save modal and query information 
       openedDays[`${month}-${day}-${year}`] = modalContent.innerHTML
-
-      wipeModalOnClose()
     });
   };
 
