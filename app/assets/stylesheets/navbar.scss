@@ -64,22 +64,28 @@ $black-link: rgb(32, 30, 30);
     position: absolute;
     right: 0px;
     top: 0px;
-  }
-  .nav > .nav-btn > label {
+
+  //collapsed navbar button
+  label {
     display: inline-block;
     width: 50px;
     height: 50px;
     padding: 13px;
+
+      span {
+        display: block;
+        width: 28px;
+        height: 10px;
+        margin-right: 100px;
+        border-top: 2px solid rgb(0, 0, 0);
+      }
+    }
   }
-  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+
+  .nav > .nav-btn > label:hover, .nav  #nav-check:checked ~ .nav-btn > label {
     background-color: rgba(0, 0, 0, 0.3);
   }
-  .nav > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid rgb(0, 0, 0);
-  }
+
   .nav > .nav-links {
     opacity: 0.8;
     z-index: 100;
@@ -92,14 +98,16 @@ $black-link: rgb(32, 30, 30);
     overflow-y: hidden;
     top: 50px;
     left: 0px;
+
+    a {
+      display: block;
+      width: 100%;
+      color: white;
+      text-align: center;
+      font-size: 1.5em;
+    }
   }
-  .nav > .nav-links > a {
-    display: block;
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-size: 1.5em;
-  }
+  
   .nav > #nav-check:not(:checked) ~ .nav-links {
     height: 0px;
   }
