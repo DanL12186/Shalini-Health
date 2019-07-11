@@ -29,11 +29,17 @@ document.addEventListener('turbolinks:load', function() {
         ],
         outerModal = document.getElementById("myModal");
         
+  //load modal for clicked day without db request if already clicked
   const populateModalIfCached = (day, month, year) => {
-    const calendarKey = `${month}-${day}-${year}`
+    const calendarKey = `${month}-${day}-${year}`,
+          cachedDay   = openedDays[calendarKey];
 
-    if (openedDays[calendarKey]) {
-      return document.querySelector('.modal-content').innerHTML += openedDays[calendarKey]
+    if (cachedDay) {
+      const modalContent = document.querySelector('.modal-content')
+
+      modalContent.innerHTML += cachedDay
+      enableSubmitUponSelection(modalContent);
+      return true;
     };
   }
 
@@ -59,6 +65,7 @@ document.addEventListener('turbolinks:load', function() {
     }
   });
 
+  //enable submit button to make an appointment once an option is selected
   const enableSubmitUponSelection = form => {
     form.querySelectorAll('input').forEach(input => {
       input.addEventListener('click', () => {
