@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   
   def new
+    redirect_to root_path unless logged_in?
     @appointment = Appointment.new
   end
 
