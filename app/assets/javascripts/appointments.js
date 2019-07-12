@@ -88,11 +88,12 @@ document.addEventListener('turbolinks:load', function() {
       const createRadioButton = time => `<input type="radio" id="${time}" name="hour" value="${time}">
                                          <label for="${time}">${time}</label>`;
 
-      const formPostData     = `authenticity_token=${authToken}&day=${day}&month=${monthsToNumbers[month]}&year=${year}`
+      const formPostData     = `day=${day}&month=${monthsToNumbers[month]}&year=${year}`
 
       modalContent.innerHTML = `<span class="close">&times;</span>
                                 <h2 class='date-title'> Available Times for Friday, ${month} ${day}, ${year}: </h2>
                                 <form class='selectAppointment' method='POST' action='/appointments?${formPostData}'>
+                                  <input type="hidden" name="authenticity_token" value=${authToken}>
                                   <div id='options'></div>
                                 </form>`
 

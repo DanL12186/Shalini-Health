@@ -1,7 +1,5 @@
 class AppointmentsController < ApplicationController
   include TimeConversion
-
-  skip_before_action :verify_authenticity_token, only: [:create]
   
   def new
     redirect_to root_path unless logged_in?
