@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
     <title> 
       <%= content_for?(:title) ? yield(:title) : 'Shalini Health' %> 
     </title>
+
+    
+    
     <%= favicon_link_tag asset_path('health.ico'), rel: 'icon', type: 'image/x-icon' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
