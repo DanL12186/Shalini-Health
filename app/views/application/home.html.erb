@@ -1,36 +1,41 @@
-<head>
-  <% title("Home") %>
-</head>
+<% title("Home") %>
 
-<p class = 'intro'> 
+<!-- polyfill for browsers that don't support WebP -->
+<script src="https://unpkg.com/webp-hero@0.0.0-dev.23/dist-cjs/polyfills.js" async></script>
+<script src="https://unpkg.com/webp-hero@0.0.0-dev.23/dist-cjs/webp-hero.bundle.js"></script>
+
+<script> 
+  const webpMachine = new webpHero.WebpMachine()
+  webpMachine.polyfillDocument()
+</script>
+
+<p class='intro'> 
   Living with intention is a powerful medicine.
   Whether this means cleansing with the changing of the seasons or aligning your daily rhythms in harmony with the moon cycles, Vidya Living provides a resource for women looking to reconnect with their roots and the ancient wisdom of self-healing through food, breath and conscious movement. 
 </p>
 
 
 <div class="container" style="margin: 10%;">
-    <div> <%= image_tag 'heart-health-1' %> </div>
-    <div class="vertical"> <%= random_image %> </div>
-    <div class="horizontal"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="big"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="vertical"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="horizontal"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="big"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="horizontal"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="big"> <%= random_image %> </div>
-    <div> <%= random_image %> </div>
-    <div class="vertical"> <%= random_image %> </div>
+    <div class="vertical"> <%= image_tag "food/thumbnails/beet-salad-thumb.webp" %> </div>
+    <div class="horizontal"> <%= image_tag "food/thumbnails/2-thumb.webp" %> </div>
+    <div class="big"> <%= image_tag "food/thumbnails/strawberries-pomegranate-blueberries-grapes-thumb.webp" %> </div>
+    <div class="vertical"> <%= image_tag "food/thumbnails/potato-salad-thumb.webp" %> </div>
+    <div class="horizontal"> <%= image_tag "food/thumbnails/bread.webp" %> </div>
+    <div> <%= image_tag "food/thumbnails/mixed-berries-thumb.webp" %> </div>
+    <div> <%= image_tag "food/thumbnails/berries-cereal-thumb.webp" %> </div>
+    <div class='big'> <%= image_tag "food/thumbnails/blueberries-thumb.webp" %> </div>
+    <div class="big"> <%= image_tag "food/thumbnails/bean-rice-avocado-salad-thumb.webp" %> </div>
+    <div class='horizontal'>  <%= image_tag "food/thumbnails/bean-onion-apple-avocado-salad-thumb.webp" %> </div>
+    <div class="horizontal"> <%= image_tag "food/thumbnails/beet-salad2-thumb.webp" %> </div>
+    <div class="big"> <%= image_tag "food/thumbnails/6-thumb.webp" %> </div>
+    <div class="big"> <%= image_tag "food/thumbnails/curried-rice-thumb.webp" %> </div>
+    <div class='big'> <%= image_tag "food/thumbnails/potatoes-parsley-thumb.webp" %> </div>
+    <div class="vertical"><%= image_tag "food/thumbnails/strawberries-thumb.webp" %> </div>
+    <div class="vertical"> <%= image_tag "food/thumbnails/7-thumb.webp" %> </div>
 </div>
 
 <p class = 'intro'> 
-  Shalini offers cooking classes, registered dietician consultation, accepts Medicare.
+  Shalini offers cooking classes, registered dietitian consultation, accepts all major forms of health insurance
 </p>
 
   <div id='locations' style = 'text-align: center;'>
