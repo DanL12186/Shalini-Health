@@ -20,7 +20,7 @@ $black-link: rgb(32, 30, 30);
 
 .nav > .nav-header > .nav-title {
   display: inline-block;
-  font-size: 24px;
+  font-size: 1.5em;
   font-family: "Dancing Script";
   padding: 10px 10px 10px 10px;
   margin-left: 10px;
@@ -59,6 +59,18 @@ $black-link: rgb(32, 30, 30);
 }
 
 @media (max-width:1000px) {
+  .nav {
+    height: 65px;
+    padding: 0px;
+    margin: 0px;
+    text-align: vertical;
+
+    .nav-header {
+      .nav-title {
+        font-size: 2em;
+      }
+    }
+  }
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
@@ -68,22 +80,22 @@ $black-link: rgb(32, 30, 30);
   //collapsed navbar button
   label {
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     padding: 13px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
 
       span {
         display: block;
-        width: 28px;
-        height: 10px;
+        width: 35px;
+        height: 15px;
         margin-right: 100px;
-        border-top: 2px solid rgb(0, 0, 0);
+        border-top: 2.5px solid rgb(0, 0, 0);
       }
     }
-  }
-
-  .nav > .nav-btn > label:hover, .nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .nav > .nav-links {
@@ -96,7 +108,7 @@ $black-link: rgb(32, 30, 30);
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
-    top: 50px;
+    top: 60px;
     left: 0px;
 
     a {
