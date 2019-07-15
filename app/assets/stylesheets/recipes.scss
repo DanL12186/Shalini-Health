@@ -1,0 +1,32 @@
+// Place all the styles related to the recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.recipe-column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#recipe-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 40em;
+    margin-bottom: 2em;
+}
+
+#dish-title {
+    font-size: 3em;
+}
+
+.title {
+    font-family: 'Dancing Script';
+}
+
