@@ -16,6 +16,15 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script:400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:100">
+
+    <!-- polyfill for browsers that don't support WebP -->
+    <script src="https://unpkg.com/webp-hero@0.0.0-dev.23/dist-cjs/polyfills.js" async></script>
+    <script src="https://unpkg.com/webp-hero@0.0.0-dev.23/dist-cjs/webp-hero.bundle.js"></script>
+
+    <script> 
+      const webpMachine = new webpHero.WebpMachine()
+      webpMachine.polyfillDocument()
+    </script>
   </head>
 
   <body>
