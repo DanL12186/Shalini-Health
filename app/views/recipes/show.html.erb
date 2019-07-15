@@ -1,0 +1,38 @@
+<% title(@recipe.name) %>
+
+<div>
+  <div class="row">
+
+    <div class="recipe-column text-center" style="margin-top: 8%;">
+      <h1 class='title'>Description</h1>
+      <p> <%= @recipe.description %> </p>
+    </div>
+
+        
+    <div class='recipe-column text-center'> 
+      <h1 class='title' id='dish-title'> 
+        <%= @recipe.name %> 
+      </h1>
+      
+      <%= image_tag "food/#{@recipe.image_name}.webp", id: 'recipe-picture' %> 
+    </div>
+
+    <div class="recipe-column text-center" style="margin-top: 8%;">
+      <h1 class='title'>Recipe</h1>
+      
+      <% @recipe.ingredients.each do | ingredient | %>
+        <p> <%= ingredient %> </p>
+      <% end %>
+      
+      <div class='heading'>
+        <h2 class='title'>Instructions</h2>
+        <p> <%= @recipe.directions %> </p>
+      </div>
+      <h2 class='title'>Estimated prep time:</h2>
+      <p> <%= @recipe.prep_time %> </p>
+    </div>
+    
+  </div>
+</div>
+
+
