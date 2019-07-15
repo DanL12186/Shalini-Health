@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :appointments
+  resources :recipes
 
   post '/appointments/get_availability' => 'appointments#get_availability'
   
