@@ -32,16 +32,20 @@ body {
 }
 
 .bg-head {
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('heartfruits');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('carrots-1920');
     font-size: 4em;
     margin-bottom: 20px;
 }
 
 .bg-foot {
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('healthy-veg-grains');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('blueberry-1920');
     color: white;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.75em;
+
+    #foot-txt {
+        opacity: 0.7;
+    }
 }
 
 div.bg-head > div {
@@ -62,9 +66,7 @@ div.bg-head > div {
     font-family: 'Dancing Script';
 }
 
-#foot-txt {
-    opacity: 0.66;
-}
+
 
 .indent {
     margin-left: 1em;
