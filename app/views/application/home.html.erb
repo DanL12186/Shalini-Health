@@ -8,7 +8,7 @@
 
 <div class="container" id="food_thumbs">
     <div class="vertical"> <%= image_tag "food/thumbnails/beet-salad-thumb.webp" %> </div>
-    <div class="horizontal"> <%= image_tag "food/thumbnails/2-thumb.webp" %> </div>
+    <div class="horizontal"> <%= link_to(image_tag("food/thumbnails/2-thumb.webp"), "/recipes/2") %> </div>
     <div class="big"> <%= image_tag "food/thumbnails/strawberries-pomegranate-blueberries-grapes-thumb.webp" %> </div>
     <div class="vertical"> <%= image_tag "food/thumbnails/potato-salad-thumb.webp" %> </div>
     <div class="horizontal"> <%= image_tag "food/thumbnails/bread-thumb.webp" %> </div>
@@ -19,7 +19,9 @@
     <div class='horizontal'>  <%= image_tag "food/thumbnails/bean-onion-apple-avocado-salad-thumb.webp" %> </div>
     <div class="horizontal"> <%= image_tag "food/thumbnails/beet-salad2-thumb.webp" %> </div>
     <div class="big"> <%= image_tag "food/thumbnails/6-thumb.webp" %> </div>
-    <div class="big"> <%= link_to ( image_tag 'food/thumbnails/curried-rice-thumb.webp'), "/recipes/1"%> </div>
+    
+    <div class="big"> <%= link_to(image_tag('food/thumbnails/curried-rice-thumb.webp'), "/recipes/1") %> </div>
+
     <div class='big'> <%= image_tag "food/thumbnails/potatoes-parsley-thumb.webp" %> </div>
     <div class="vertical"><%= image_tag "food/thumbnails/strawberries-thumb.webp" %> </div>
     <div class="vertical"> <%= image_tag "food/thumbnails/7-thumb.webp" %> </div>
