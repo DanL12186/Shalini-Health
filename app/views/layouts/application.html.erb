@@ -22,8 +22,10 @@
     <script src="https://unpkg.com/webp-hero@0.0.0-dev.23/dist-cjs/webp-hero.bundle.js"></script>
 
     <script> 
-      const webpMachine = new webpHero.WebpMachine()
-      webpMachine.polyfillDocument()
+      document.addEventListener('turbolinks:load', function() {
+        const webpMachine = new webpHero.WebpMachine()
+        webpMachine.polyfillDocument()
+      });
     </script>
   </head>
 
