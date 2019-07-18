@@ -37,12 +37,12 @@
 
 .vertical, .horizontal, .big {
   transition: 0.33s;
-}
 
-.vertical:hover, .horizontal:hover, .big:hover {
-  transform: scale(1.15);
-  box-shadow: 3px 13px 23px rgba(0, 0, 0, 0.69);
-  z-index: 1;
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 3px 13px 23px rgba(0, 0, 0, 0.69);
+    z-index: 1;
+  }
 }
 
 .intro {
@@ -53,23 +53,19 @@
   text-align: center;
   font-family: 'Josefin Sans';
   color: rgb(177, 91, 105);
-}
 
-@media(min-width: 800px) {
-  .intro {
-      width: 80%;
-      font-size: 200%;
-      padding-top: 15px;
-      padding-bottom: 15px;
+  @media(min-width: 800px) {    
+    width: 80%;
+    font-size: 200%;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-}
-
-@media(min-width: 1200px) {
-  .intro {
-      font-size: 250%;
-      width: 66%;
-      padding-top: 25px;
-      padding-bottom: 25px;
+  
+  @media(min-width: 1200px) {
+    font-size: 250%;
+    width: 66%;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 }
 
@@ -83,5 +79,5 @@
 }
 
 .location-header {
-font-weight: 800;
+  font-weight: 800;
 }
