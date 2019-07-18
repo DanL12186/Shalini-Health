@@ -26,8 +26,13 @@
       
       <div class='heading'>
         <h2 class='title'>Instructions</h2>
-        <p> <%= @recipe.directions %> </p>
+        <ol>
+          <% @recipe.directions.lines.each do | line | %>
+            <li> <%= line %> </li>
+          <% end %>
+        </ol>
       </div>
+
       <h2 class='title'>Estimated prep time:</h2>
       <p> <%= @recipe.prep_time %> </p>
     </div>
