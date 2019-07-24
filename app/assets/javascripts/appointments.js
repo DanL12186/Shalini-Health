@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
   const authToken  = document.querySelectorAll('head [name=csrf-token]')[0].content,
-        openedDays = {};
+        cachedDays = {};
   
   const monthsToNumbers = {
           January: 1,
@@ -32,7 +32,7 @@ document.addEventListener('turbolinks:load', function() {
   //load modal for clicked day without db request if already clicked
   const populateModalIfCached = (day, month, year) => {
     const calendarKey = `${month}-${day}-${year}`,
-          cachedDay   = openedDays[calendarKey];
+          cachedDay   = cachedDays[calendarKey];
 
     if (cachedDay) {
       const modalContent = document.querySelector('.modal-content')
@@ -75,8 +75,11 @@ document.addEventListener('turbolinks:load', function() {
   }
 
   //gets availability of appointments for the selected day, then displays those times..
-  //in a modal where the user can book an appointment
+  //in a modal where the user can book an appointment. If a date has already been opened, loads cached results
   const getAvailability = (url, options, month, day, year) => {
+    if (populateModalIfCached(day, month, year)) {
+      return null;
+    }
     fetch(url, options)
     .then(response => response.json())
     .then(unavailableTimes => {
@@ -107,7 +110,7 @@ document.addEventListener('turbolinks:load', function() {
       enableSubmitUponSelection(form)
 
       //save modal and query information 
-      openedDays[`${month}-${day}-${year}`] = modalContent.innerHTML
+      cachedDays[`${month}-${day}-${year}`] = modalContent.innerHTML
     });
   };
 
@@ -142,11 +145,6 @@ document.addEventListener('turbolinks:load', function() {
                                 credentials: 'same-origin',
                                 headers: { 'X-CSRF-Token': authToken }
                               };
-        
-        //load cached data if possible, without hitting db
-        if (populateModalIfCached(day, month, year)) {
-          return null;
-        }
 
         getAvailability(url, options, month, day, year)
       });
