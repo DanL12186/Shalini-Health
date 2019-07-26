@@ -32,7 +32,7 @@ body {
 }
 
 .bg-head {
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('cocoa-header.webp');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('veggies-fruit-footer.webp');
     font-size: 4em;
     margin-bottom: 20px;
 
@@ -42,7 +42,7 @@ body {
 }
 
 .bg-foot {
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('veggies-fruit-footer.webp');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('cocoa-header.webp');
     color: white;
     text-align: center;
     font-size: 1.75em;
@@ -54,12 +54,12 @@ body {
 
 //load jpg versions of header/footer if no WebP support found
 .no-webp .bg-head {
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('cocoa-header.jpg');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('veggies-fruit-footer.jpg');
     background-size: cover;
 }
 
 .no-webp .bg-foot {
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('veggies-fruit-footer.jpg');
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('cocoa-header.jpg');
     background-size: cover;
 }
 
