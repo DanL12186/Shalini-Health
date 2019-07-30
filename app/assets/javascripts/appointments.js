@@ -83,7 +83,7 @@ document.addEventListener('turbolinks:load', function() {
     fetch(url, options)
     .then(response => response.json())
     .then(unavailableTimes => {
-      const unavailableHours =  unavailableTimes.map(date=> date.match(/\d{2}:\d{2}/)[0]),
+      const unavailableHours =  unavailableTimes.map(date=> date.match(/\d{2}:00/)[0]),
             availableTimes   =  timeSlots.filter(slot => !unavailableHours.includes(slot)),
             standardTimes    =  availableTimes.map(time => militaryToStandardTime(time)),
             modalContent     =  document.querySelector('.modal-content');
