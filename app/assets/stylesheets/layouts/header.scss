@@ -1,0 +1,15 @@
+.bg-head {
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('veggies-fruit-header.webp');
+    font-size: 4em;
+    margin-bottom: 20px;
+
+    #header-title {
+        opacity: 0.55;
+    }
+}
+
+//load jpg versions of header/footer if no WebP support found
+.no-webp .bg-head {
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('veggies-fruit-header.jpg');
+    background-size: cover;
+}

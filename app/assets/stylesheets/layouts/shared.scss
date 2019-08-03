@@ -1,0 +1,17 @@
+.bg-head, .bg-foot {
+    position: relative;
+    min-height: 5rem;
+    max-height: 15rem;
+    padding: 15rem 0;
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-family: 'Dancing Script';
+
+    &.hide {
+        display: none;
+    }
+}
