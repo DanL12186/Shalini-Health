@@ -1,14 +1,13 @@
 <% title(@recipe.name) %>
 
-<div>
-  <div class="row">
+<div id='recipe-page'>
+  <div class='row'>
 
-    <div class="recipe-column text-center" style="margin-top: 8%;">
-      <h1 class='title'>Description</h1>
-      <p> <%= @recipe.description %> </p>
+    <div class="recipe-column text-center" id='recipe-description'>
+      <h1 class='title' id='description-title'>Description</h1>
+      <p id='description-body'> <%= @recipe.description %> </p>
     </div>
 
-        
     <div class='recipe-column text-center'> 
       <h1 class='title' id='dish-title'> 
         <%= @recipe.name %> 
@@ -17,27 +16,28 @@
       <%= image_tag "food/#{@recipe.image_name}.webp", id: 'recipe-picture' %> 
     </div>
 
-    <div class="recipe-column text-center" style="margin-top: 8%;">
+    <div class='recipe-column text-center' id='recipe'>
       <h1 class='title'>Recipe</h1>
-      
+
       <% @recipe.ingredients.each do | ingredient | %>
-        <p> <%= ingredient %> </p>
+        <p class='ingredient'> <%= ingredient %> </p>
       <% end %>
       
       <div class='heading'>
-        <h2 class='title'>Instructions</h2>
+        <h2 class='title' id='instructions'>Instructions</h2>
         <ol>
-          <% @recipe.directions.lines.each do | line | %>
-            <li> <%= line %> </li>
+          <% @recipe.directions.lines.each do | instruction_step | %>
+            <li class='instruction'> <%= instruction_step %> </li>
           <% end %>
         </ol>
       </div>
 
-      <h2 class='title'>Estimated prep time:</h2>
-      <p> <%= @recipe.prep_time %> </p>
+      <h2 class='title' id='prep-time-title'>Estimated prep time:</h2>
+      <p id='prep-time'> <%= @recipe.prep_time %> </p>
     </div>
     
   </div>
+
 </div>
 
 

@@ -7,6 +7,14 @@
     padding: 10px;
 }
 
+#recipe {
+    margin-top: 8%;
+}
+
+#recipe-description {
+    margin-top: 8%;
+}
+
 .row:after {
     content: "";
     display: table;
@@ -30,3 +38,84 @@
     font-family: 'Dancing Script';
 }
 
+@media(max-width: 1000px) {
+    .bg-head, .bg-foot {
+        display: none;
+    }
+
+    #recipe-picture {
+        margin: auto;
+        width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    .title {
+        font-family: 'Dancing Script';
+    } 
+
+    #recipe, #recipe-description {
+        margin-top: 2vw;
+    }
+
+    #description-title {
+        display: none;
+        width: 0%;
+    }
+
+    #description-body {
+        margin-top: 4vw;
+        font-size: 4vw;
+    }
+
+    #recipe {
+
+        .ingredient {
+            margin: 1vw;
+            font-size: 2.75vw;
+        }
+
+        .instruction {
+            margin-bottom: 1.5vw;
+            margin-top: 1.5vw;
+            font-size: 2.25vw;
+            line-height: 3.25vw;
+        }
+
+        .title {
+            font-family: Palatino, Georgia, Times, "Times New Roman", serif;
+            margin-bottom: 4vw;
+            margin-top: 4vw;
+        }
+    }
+    
+    .recipe-column {
+        float: none;
+        padding: 0px;
+        display: grid;
+        width: 100%;
+    }
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: none;
+    }
+    
+    #recipe-picture {
+        display: block;
+    }
+    
+    #dish-title {
+        font-size: 3em;
+    }
+
+    #prep-time-title {
+        margin-top: 4%;
+    }
+
+    #prep-time {
+        margin: 0px;
+        font-size: 3em;
+    }
+}
