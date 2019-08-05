@@ -3,8 +3,8 @@
 document.addEventListener('turbolinks:load', () => {
 
   const hideHeaderAndFooter = () => {
-      document.querySelector('.bg-head').classList.add('hide')
-      document.querySelector('.bg-foot').classList.add('hide')
+    document.querySelector('.bg-head').classList.add('hide')
+    document.querySelector('.bg-foot').classList.add('hide')
   }
 
   const showHeaderAndFooter = () => {
