@@ -39,6 +39,10 @@
 }
 
 @media(max-width: 1000px) {
+    .recipe-body {
+        background: rgb(255, 255, 255);
+    }
+
     #recipe-picture {
         margin: auto;
         width: 100%;
