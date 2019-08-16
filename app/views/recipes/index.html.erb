@@ -1,0 +1,12 @@
+<% title('Recipes') %>
+
+<div>
+
+  <% @recipes.each do | recipe | %>
+    <ul> 
+      <%= image_tag "food/thumbnails/#{recipe.image_name}-thumb.webp", class: 'index-thumb' %> 
+      <%= link_to recipe.name, recipe_path(recipe), class: 'recipe-link' %> 
+    </ul>
+  <% end %>
+
+</div>
