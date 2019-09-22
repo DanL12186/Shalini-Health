@@ -30,10 +30,9 @@ document.addEventListener('turbolinks:load', () => {
     window.addEventListener('resize', widthListener)
 
     //remove event listener upon leaving the page
-    document.addEventListener('turbolinks:before-visit', function() {
+    document.addEventListener('turbolinks:before-visit', () => {
       window.removeEventListener('resize', widthListener);
     })
-
   }
 })
 
