@@ -9,12 +9,8 @@
   <%= f.label :email %>
   <%= f.text_field :email %> 
   <br>
-  <%= f.label :home_phone %>
-  <%= f.telephone_field :home_phone, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}", required: true, placeholder: '617-555-1234' %>
-  <br>
-  <%= f.label :cell_number %>
+  <%= f.label :contact_number %>
   <%= f.telephone_field :cell, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}", required: true, placeholder: '617-555-1234' %>
-  <br>
   <br>
   <%= f.label :password %>
   <%= f.password_field :password %> 
