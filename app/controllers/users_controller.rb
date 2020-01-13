@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    #incorporate this into initializer later
+    cell = @user.cell.delete('- ')
+    @user.cell = "#{cell[0..2]}-#{cell[3..5]}-#{cell[6..9]}"
+
     respond_to do | format |
       if @user.save
         session[:user_id] = @user.id
