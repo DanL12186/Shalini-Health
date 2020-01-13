@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'shalani@shalani-health.com'
+  default from: 'www.lexingtonnutritionservices.com'
   layout 'mailer'
 end
