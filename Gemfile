@@ -26,9 +26,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-#ENV manager
-gem 'figaro'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -43,6 +40,8 @@ group :development, :test do
 end
 
 group :development do
+  #ENV manager
+  gem 'figaro'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
