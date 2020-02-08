@@ -7,10 +7,18 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    appointment = Appointment.create(user_id: current_user.id, date: get_date_from_params())
+    date = get_date_from_params
+    appointment = Appointment.create(user_id: current_user.id, date: date)
 
     if appointment.valid?
-      redirect_to root_path
+      respond_to do | format |
+        human_readable_date = format_date(date)
+
+        UserMailer.with(user: current_user, appointment_date: human_readable_date).appointment_email.deliver_later
+  
+        format.html { redirect_to(current_user, notice: 'User was successfully created.') }
+        format.json { render json: current_user, status: :created, location: current_user }
+      end
     end
   end
 

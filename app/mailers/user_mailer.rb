@@ -3,7 +3,12 @@ class UserMailer < ApplicationMailer
 
   def welcome_email
     @user = params[:user]
-    @url  = 'http://example.com/login'
     mail(to: @user.email, subject: 'Welcome from Lexington Nutrition Services')
+  end
+
+  def appointment_email
+    @user = params[:user]
+    @appointment_date = params[:appointment_date]
+    mail(to: @user.email, subject: "Your appointment with Lexington Nutrition Services")
   end
 end
