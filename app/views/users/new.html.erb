@@ -10,7 +10,7 @@
   <%= f.text_field :email %> 
   <br>
   <%= f.label :contact_number %>
-  <%= f.telephone_field :cell, pattern: "[0-9]{3}[- ]{0,1}[0-9]{3}[- ]{0,1}[0-9]{4}", required: true, placeholder: '781-555-1234' %>
+  <%= f.telephone_field :cell, pattern: "^[0-9]{3}[- ]{0,1}[0-9]{3}[- ]{0,1}[0-9]{4}$", required: true, placeholder: '781-555-1234' %>
   <br>
   <%= f.label :password %>
   <%= f.password_field :password %> 
