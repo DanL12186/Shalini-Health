@@ -93,13 +93,18 @@ document.addEventListener('turbolinks:load', function() {
 
       const formPostData     = `day=${day}&month=${monthsToNumbers[month]}&year=${year}`
 
-      modalContent.innerHTML = `<span class="close">&times;</span>
+      if (!availableTimes.length) {
+        return modalContent.innerHTML = `<span class="close">&times;</span>
+                                         <h2 class='date-title'> No times available for Friday, ${month} ${day}, ${year}: </h2>
+                                        `
+      } else {
+        modalContent.innerHTML = `<span class="close">&times;</span>
                                 <h2 class='date-title'> Available Times for Friday, ${month} ${day}, ${year}: </h2>
                                 <form class='selectAppointment' method='POST' action='/appointments?${formPostData}'>
                                   <input type="hidden" name="authenticity_token" value=${authToken}>
                                   <div id='options'></div>
                                 </form>`
-
+      }
       const form         = document.querySelector('.selectAppointment'),
             radioButtons = standardTimes.map(time => `<p> ${createRadioButton(time)} </p>`).join(''),
             submitButton = `<button input='submit' disabled=true id='submit' data-confirm='Book this appointment for ${month} ${day}, ${year}?'>Submit</button>`;
