@@ -14,7 +14,9 @@ class AppointmentsController < ApplicationController
       respond_to do | format |
         human_readable_date = format_date(date)
 
+        #mail both Shalani and the user about upcoming appointment
         UserMailer.with(user: current_user, appointment_date: human_readable_date).appointment_email.deliver_later
+        ShalaniMailer.with(user: current_user, appointment_date: human_readable_date).appointment_email.deliver_later
   
         format.html { redirect_to(current_user, notice: 'User was successfully created.') }
         format.json { render json: current_user, status: :created, location: current_user }
