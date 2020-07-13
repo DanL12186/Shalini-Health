@@ -9,14 +9,15 @@ class AppointmentsController < ApplicationController
   def create
     date = get_date_from_params
     appointment = Appointment.create(user_id: current_user.id, date: date)
+    appointment_details = { user: current_user, appointment_date: human_readable_date }
 
-    if appointment.valid?
+    if appointment.valid?  
       respond_to do | format |
         human_readable_date = format_date(date)
 
         #mail both Shalani and the user about upcoming appointment
-        UserMailer.with(user: current_user, appointment_date: human_readable_date).appointment_email.deliver_later
-        ShalaniMailer.with(user: current_user, appointment_date: human_readable_date).appointment_email.deliver_later
+        UserMailer.with(appointment_details).appointment_email.deliver_later
+        ShalaniMailer.with(appointment_details).appointment_email.deliver_later
   
         format.html { redirect_to(current_user, notice: 'User was successfully created.') }
         format.json { render json: current_user, status: :created, location: current_user }
