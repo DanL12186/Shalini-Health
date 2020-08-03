@@ -33,7 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 #a simple calendar gem
-gem "simple_calendar", ">= 2.0"
+gem "simple_calendar", '>= 2.0', '< 2.4.0'
 
 group :development, :test do
   gem 'pry'
